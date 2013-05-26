@@ -21,6 +21,13 @@ in the form `LINE,COLUMN`. `,COLUMN` may be omitted, if so, it is assumed
 to be `1`. Both `line` and `column` are assumed to be 1-indexed (like most
 editors).
 
+* Green `+` signs indicate scope definitions -- i.e., a new variable was created
+  in this scope.
+
+* Purple `*` signs indicate use of a variable from a containing scope.
+
+* If the function is named, it will use that to describe the function.
+
 # installation
 
 `npm install -g scoped`
