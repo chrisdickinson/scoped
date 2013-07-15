@@ -22,7 +22,8 @@
   "dependencies": {
     "optimist": "~0.3.5",
     "process": "~0.5.1",
-    "cssauron-falafel": "0.0.0",
+    "cssauron-falafel": "0.0.3",
+    "cssauron": "~0.2.0",
     "falafel": "~0.2.1",
     "ansicolors": "~0.2.1",
     "concat-stream": "~1.0.0"

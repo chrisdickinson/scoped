@@ -13,6 +13,57 @@ var target = (optimist.argv._ || [])[0]
   , output
   , input
 
+var GLOBALS = [
+   'module'
+ , 'arguments'
+ , 'this'
+ , 'process'
+ , 'console'
+ , 'setInterval'
+ , 'clearInterval'
+ , 'setTimeout'
+ , 'clearTimeout'
+ , 'JSON'
+ , 'require'
+ , 'window'
+ , 'Math'
+ , 'Object'
+ , 'Function'
+ , 'Number'
+ , 'Array'
+ , 'RegExp'
+ , 'Date'
+ , 'document'
+ , 'define'
+ , 'undefined'
+ , 'String'
+ , 'Boolean'
+ , 'eval'
+ , 'encodeURIComponent'
+ , 'decodeURIComponent'
+ , 'unescape'
+ , 'parseInt'
+ , 'parseFloat'
+ , 'TypeError'
+ , 'SyntaxError'
+ , 'Error'
+ , 'Image'
+ , 'isNaN'
+ , 'Infinity'
+ , 'NaN'
+ , 'isFinite'
+ , 'navigator'
+ , 'Uint8Array'
+ , 'Uint16Array'
+ , 'Uint32Array'
+ , 'Int8Array'
+ , 'Int16Array'
+ , 'Int32Array'
+ , 'Float32Array'
+ , 'Float64Array'
+ , 'XMLHttpRequest'
+]
+
 if(!target) {
   return help()
 }
@@ -42,9 +93,6 @@ function process_file(input) {
     , obj_expr = language('object > * > id:first-child')
     , catch_clause = language('catch')
     , try_clause = language('try')
-
-  var global_names =
-  'module,process,console,setInterval,clearInterval,setTimeout,clearTimeout,JSON,require,window,Math,Object,Function,Number,Array,RegExp,Date,document,define,undefined,String'.split(',')
 
   try {
     input = '(function(){'+input+'})'
@@ -136,7 +184,7 @@ function process_file(input) {
         }
         return
       }
-      if(global_names.indexOf(node.name) !== -1) {
+      if(GLOBALS.indexOf(node.name) !== -1) {
         return
       }
       node._kind = kind
