@@ -22,7 +22,7 @@ if(target === '-') {
   try { process.stdin.resume() } catch(err) { }
   return
 } else {
-  target = path.join(cwd, target || '')
+  target = target[0] === '/' ? target : path.join(cwd, target || '')
   try {
     input = fs.createReadStream(target).pipe(concat(process_file))
     return
