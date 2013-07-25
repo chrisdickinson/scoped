@@ -1,6 +1,35 @@
 # scoped
 
-scoped is a command line tool to help you reason about <sub>your</sub><sup>other people's</sup> javascript.
+scoped is a command line tool to help you reason about your javascript.
+
+scoped is also a library that will give you all of the scope information about
+a given `falafel`-generated AST! (it even works with `let`!)
+
+```javascript
+var scoped = require('scoped')
+  , falafel = require('falafel')
+
+falafel('<some javascript>', scoped(function(scope) {
+    scope.vars                          // vars declared in this scope
+    scope.vars[0].name                  // the name of the var
+    scope.vars[0].nodes                 // a list of nodes + kinds of use
+    scope.vars[0].nodes[0].kind         // "implicit", "explicit", or "declare"
+    scope.vars[0].nodes[0].node         // the esprima AST node.
+
+    scope.children                      // the list of child scopes of this node
+    scope.children[0]                   // as an array.
+
+    scope.uses                          // the list of variables that this scope
+                                        // "uses" from parent scopes. at top level,
+                                        // these are globals.
+}))
+
+// you can also tell scoped to ignore certain globals:
+falafel('<some javascript>', scoped(['Math', 'module'], function(scope) {
+
+}))
+
+```
 
 it notifies you of globals -- both explicit (created by assigning) and implicit
 (use without definition) -- and, when given a position in the file, will let you know
