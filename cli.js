@@ -45,6 +45,8 @@ if(target !== '-') {
 function process_file(input) {
   var pos = null
 
+  input = new Buffer('function module() { ' + input + ' }')
+
   if(optimist.argv.position) {
     pos = line_col_to_idx.apply(
         null
@@ -121,14 +123,14 @@ function process_file(input) {
       }
     }
 
-    while(chain.length) {
+    while(chain.length > 1) {
       current = chain.pop()
-      print(current)
+      print(current, chain.length)
     }
 
   }
 
-  function print(scope) {
+  function print(scope, idx) {
     var from = idx_to_line_col(scope.scope.range[0])
       , to = idx_to_line_col(scope.scope.range[1])
       , name
@@ -139,6 +141,10 @@ function process_file(input) {
 
     if(scope.scope.id) {
       name += ': ' + scope.scope.id.name
+    }
+
+    if(idx === 1) {
+      name = 'program'
     }
 
     name = colors.yellow('<' + name + '>') + ' from ' + from + ' to ' + to
