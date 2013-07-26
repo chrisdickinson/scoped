@@ -4,7 +4,7 @@
   "description": "command line tool exposing lexical-scope",
   "main": "index.js",
   "scripts": {
-    "test": "jsl ./test/*.js ./cli.js ./globals.js ./index.js && node test/index.js"
+    "test": "node test/index.js"
   },
   "bin": {
     "scoped": "./bin/scoped"
@@ -30,6 +30,6 @@
   },
   "devDependencies": {
     "tape": "~1.0.4",
-    "jsl": "0.0.4"
+    "jsl": "0.0.5"
   }
 }

@@ -6,6 +6,12 @@ var scoped = require('../index')
 
 require('./cli')
 
+test(
+    'test lint rules'
+  , require('jsl/rules')
+      .test([__filename, path.resolve(__dirname, '..', 'cli.js')])
+)
+
 test('test let scope in block', function(assert) {
   falafel(read('let-scope.js'), scoped(ready))
 
