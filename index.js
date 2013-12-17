@@ -26,10 +26,10 @@ module.exports = function(ignore, ready) {
 
   function write_node(node) {
     switch(true) {
-      case is_root(node): finish(node); break
-      case is_declaration(node): decl(node); break
-      case is_scope_creation(node): exit(node); break
-      case is_ident(node) && !is_neutral_id(node): use(node); break
+      case !!is_root(node): finish(node); break
+      case !!is_declaration(node): decl(node); break
+      case !!is_scope_creation(node): exit(node); break
+      case !!is_ident(node) && !is_neutral_id(node): use(node); break
     }
   }
 
