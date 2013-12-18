@@ -14,8 +14,13 @@ var is_scope_creation = lang('function, catch, [has_let_statements], :root')
   , is_root = lang(':root')
   , is_ident = lang('id')
 
-module.exports = function(ignore, ready) {
+module.exports = function(ignore, attach_scope, ready) {
   var scopes = []
+
+  if(arguments.length < 2) {
+    ready = attach_scope
+    attach_scope = false
+  }
 
   if(arguments.length === 1) {
     ready = ignore
@@ -107,6 +112,10 @@ module.exports = function(ignore, ready) {
       , declare: scope_declare
       , unresolved: []
       , children: []
+    }
+
+    if(attach_scope) {
+      node.scope = scope
     }
 
     return scope
@@ -202,6 +211,8 @@ module.exports = function(ignore, ready) {
       , uses: other_scope.unresolved
       , children: other_scope.children  
     })
+
+    other_scope.parent = scope
 
     for(var i = 0, len = other_scope.unresolved.length; i < len; ++i) {
       nodes = other_scope.unresolved[i].nodes

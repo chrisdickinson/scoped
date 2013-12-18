@@ -55,7 +55,7 @@ function process_file(input) {
   }
 
   try {
-    falafel(input + '', require('./index')(globals, done))
+    falafel(input + '', require('./index')(globals, optimist.attach, done))
   } finally {
   }
 
