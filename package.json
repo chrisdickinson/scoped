@@ -1,6 +1,6 @@
 {
   "name": "scoped",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "command line tool exposing lexical-scope",
   "main": "index.js",
   "scripts": {
@@ -22,7 +22,7 @@
   "dependencies": {
     "optimist": "~0.3.5",
     "process": "~0.5.1",
-    "cssauron-falafel": "0.0.3",
+    "cssauron-falafel": "1.2.1",
     "cssauron": "~0.2.1",
     "falafel": "~0.2.1",
     "ansicolors": "~0.2.1",
