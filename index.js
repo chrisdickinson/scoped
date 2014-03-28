@@ -224,6 +224,15 @@ module.exports = function(ignore, attach_scope, ready) {
   }
 
   function finish(node) {
+    if(!scopes.length) {
+      scopes.push({
+          defined_by: node
+        , declared: []
+        , unresolved: []
+        , children: []
+      })
+    }
+
     ready({
         scope: scopes[0].defined_by
       , vars: scopes[0].declared
