@@ -17,7 +17,7 @@ var is_scope_creation = lang('function, catch, [has_let_statements], :root')
 module.exports = function(ignore, attach_scope, ready) {
   var scopes = []
 
-  if(arguments.length < 2) {
+  if(arguments.length < 3) {
     ready = attach_scope
     attach_scope = false
   }
