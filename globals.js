@@ -47,5 +47,9 @@ module.exports = [
   , 'Float32Array'
   , 'Float64Array'
   , 'XMLHttpRequest'
+  , 'Set'
+  , 'WeakSet'
+  , 'Map'
+  , 'WeakMap'
 ]
 
