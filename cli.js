@@ -55,7 +55,10 @@ function process_file(input) {
   }
 
   try {
-    falafel(input + '', require('./index')(globals, optimist.attach, done))
+    falafel(input + '', {
+        ranges: true
+      , ecmaVersion: 6
+    }, require('./index')(globals, optimist.attach, done))
   } finally {
   }
 
