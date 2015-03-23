@@ -1,6 +1,6 @@
 {
   "name": "scoped",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "command line tool exposing lexical-scope",
   "main": "index.js",
   "scripts": {
